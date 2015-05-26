@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'happiness/average_group_score/:group_id' => 'happiness#average_group_score'
-  post 'happiness/user_score' => 'happiness#user_score'
+  post 'happiness/join_group' => 'happiness#join_group'
+  post 'happiness/create_group' => 'happiness#create_group'
+
+  get 'happiness/group_average_score/:group_id' => 'happiness#group_average_score'
+  post 'happiness/update_user_score' => 'happiness#update_user_score'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

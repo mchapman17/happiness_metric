@@ -18,10 +18,20 @@ ActiveRecord::Schema.define(version: 20150317104504) do
   enable_extension "uuid-ossp"
 
   create_table "groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                    null: false
+    t.string   "password_digest",                         null: false
+    t.uuid     "user_id",                                 null: false
+    t.decimal  "min_score",                 default: 0.0, null: false
+    t.decimal  "max_score",                 default: 5.0, null: false
+    t.decimal  "interval",                  default: 0.1, null: false
+    t.decimal  "average_score",             default: 2.5, null: false
+    t.integer  "exclude_score_after_weeks", default: 0,   null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
+
+  add_index "groups", ["name"], name: "index_groups_on_name", unique: true, using: :btree
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "scores", force: :cascade do |t|
     t.uuid     "group_id",   null: false
