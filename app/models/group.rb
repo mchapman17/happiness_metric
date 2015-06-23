@@ -2,7 +2,9 @@ class Group < ActiveRecord::Base
 
   has_secure_password
 
-  validates :name, presence: true
+  has_many :scores, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: { case_sensitive: false, message: "already taken" }
   validates :password, length: { minimum: 6 }
 
 end

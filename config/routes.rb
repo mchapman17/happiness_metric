@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   post 'happiness/join_group' => 'happiness#join_group'
   post 'happiness/create_group' => 'happiness#create_group'
+  post 'happiness/update_group/:group_id' => 'happiness#update_group'
 
-  get 'happiness/group_average_score/:group_id' => 'happiness#group_average_score'
+  post 'happiness/group/:group_id' => 'happiness#group'
   post 'happiness/update_user_score' => 'happiness#update_user_score'
 
   # You can have the root of your site routed with "root"
