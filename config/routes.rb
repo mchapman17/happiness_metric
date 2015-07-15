@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  post 'happiness/join_group' => 'happiness#join_group'
-  post 'happiness/create_group' => 'happiness#create_group'
-  post 'happiness/update_group/:group_id' => 'happiness#update_group'
+  # post 'happiness/join_group' => 'happiness#join_group'
+  # post 'happiness/create_group' => 'happiness#create_group'
+  # post 'happiness/update_group/:group_id' => 'happiness#update_group'
 
-  post 'happiness/group/:group_id' => 'happiness#group'
-  post 'happiness/update_user_score' => 'happiness#update_user_score'
+  # post 'happiness/group/:group_id' => 'happiness#group'
+  # post 'happiness/update_user_score' => 'happiness#update_user_score'
+
+  resources :groups, only: [:show, :create, :update]
+  resources :scores, only: [:create, :update]
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
