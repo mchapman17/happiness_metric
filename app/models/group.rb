@@ -15,8 +15,4 @@ class Group < ActiveRecord::Base
     scores.exclude_after_weeks(exclude_score_after_weeks)
   end
 
-  def score_for_user_id(user_id)
-    scores.where(user_id: user_id).first_or_create!(score: 0)
-  end
-
 end
