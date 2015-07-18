@@ -7,7 +7,6 @@ class ApplicationController < ActionController::API
       group: {
         id: @group.id,
         name: @group.name,
-        min_score: @group.min_score,
         max_score: @group.max_score,
         interval: @group.interval,
         exclude_score_after_weeks: @group.exclude_score_after_weeks,

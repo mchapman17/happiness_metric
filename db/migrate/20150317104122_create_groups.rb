@@ -4,10 +4,9 @@ class CreateGroups < ActiveRecord::Migration
       t.string :name, null: false
       t.string :password_digest, null: false
       t.uuid :user_id, null: false
-      t.decimal :min_score, null: false, default: 0
       t.decimal :max_score, null: false, default: 5
       t.decimal :interval, null: false, default: 0.1
-      t.decimal :average_score, null: false, default: 2.5
+      t.decimal :average_score, null: false, default: 0
       t.integer :exclude_score_after_weeks, null: false, default: 0
 
       t.timestamps null: false

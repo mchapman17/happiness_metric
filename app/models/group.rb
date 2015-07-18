@@ -5,7 +5,8 @@ class Group < ActiveRecord::Base
   has_many :scores, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, message: "already taken" }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 8 }
+  validates :password_confirmation, length: { minimum: 8 }, on: :create
 
   def average_score
     included_scores.average(:score).to_f.round(2)

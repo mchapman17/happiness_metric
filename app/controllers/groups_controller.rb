@@ -1,10 +1,14 @@
 class GroupsController < ApplicationController
 
   def show
-    @group = Group.find(params[:id])
-    @score = @group.scores.where(user_id: params[:user_id]).first_or_create!(score: 0)
+    @group = Group.find_by_id(params[:id])
 
-    render json: response_json
+    if @group
+      @score = @group.scores.where(user_id: params[:user_id]).first_or_create!(score: 0)
+      render json: response_json
+    else
+      render json: { error: "Group not found." }, status: 404
+    end
   end
 
   def create
@@ -46,7 +50,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :password, :max_score, :interval, :exclude_score_after_weeks)
+    params.require(:group).permit(:name, :password, :password_confirmation, :max_score, :interval, :exclude_score_after_weeks)
   end
 
 end
