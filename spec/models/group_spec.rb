@@ -12,7 +12,6 @@ describe Group do
 
   it "requires a name" do
     group.name = nil
-    puts "name: #{name}"
     expect(group.valid?).to be false
   end
 
